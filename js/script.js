@@ -30,6 +30,25 @@ function titleClickHandler(event) {
     correctArticle.classList.add("active");
 }
 
+const titleSpace = document.querySelector(".titles");
+const articleList = document.querySelectorAll(".post");
+
+function generateTitleLinks() {
+    titleSpace.innerHTML = "";
+    let html = "";
+
+    for(let article of articleList) {
+        let articleId = article.getAttribute("id");
+        let articleTitle = article.querySelector(".post-title").innerHTML;
+
+        let newHtml = '<li><a href=#' + articleId + '><span>' + articleTitle + '</span></a></li>';
+        html += newHtml;
+    }
+    titleSpace.innerHTML = html; 
+}
+
+generateTitleLinks();
+
 const links = document.querySelectorAll(".titles a");
 
 for(let link of links) {
